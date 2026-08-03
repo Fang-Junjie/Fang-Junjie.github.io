@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>刷新率检测</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2em;
+      color: #333;
+    }
+    .rate {
+      font-size: 3em;
+      color: #007acc;
+      margin-top: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>当前屏幕刷新率估算值</h1>
+  <div class="rate" id="rate">检测中...</div>
+
+  <script>
+    function detectRefreshRate(callback, sampleCount = 60) {
+      const frames = [];
+      let lastTime = performance.now();
+
+      function step() {
+        const now = performance.now();
+        frames.push(now - lastTime);
+        lastTime = now;
+
+        if (frames.length < sampleCount) {
+          requestAnimationFrame(step);
+        } else {
+          const useful = frames.slice(5); // 丢掉前5个样本
+          const average = useful.reduce((a, b) => a + b, 0) / useful.length;
+          const refreshRate = Math.round(1000 / average);
+          callback(refreshRate);
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // 调用并更新页面
+    detectRefreshRate((rate) => {
+      document.getElementById('rate').textContent = rate + ' Hz';
+    });
+  </script>
+</body>
+</html>
