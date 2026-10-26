@@ -1,0 +1,28 @@
+{
+    "urls": [
+        {
+            "url": "http://www.饭太硬.cc/tv",
+            "name": "饭太硬"
+        },
+        {
+            "url": "http://www.饭太硬.net/tv",
+            "name": "饭太硬备用"
+        },
+        {
+            "url": "http://fty.xxooo.cf/tv",
+            "name": "饭太硬备用1"
+        },
+        {
+            "url": "https://mitvbox.xyz/小米/DEMO.json",
+            "name": "小米"
+        },
+        {
+            "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.top/",
+            "name": "王二小"
+        },
+        {
+            "url": "https://n1fnosdepository.gd.ddnsto.com/TVBox/config.json",
+            "name": "自建"
+        }
+    ]
+}
